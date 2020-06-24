@@ -1,4 +1,4 @@
-// Problem https://github.com/GoesToEleven/golang-web-dev/tree/master/022_hands-on/01/03_hands-on
+// Problem https://github.com/GoesToEleven/golang-web-dev/tree/master/022_hands-on/01/05_hands-on
 
 package main
 
@@ -42,12 +42,12 @@ func me (res http.ResponseWriter, req *http.Request) {
 }
 
 func init() {
-	filePrefix, _ := filepath.Abs("./WebGo/exercises/exercisesOne/ninjaLevelOne2/")
+	filePrefix, _ := filepath.Abs("./WebGo/exercises/exercisesOneOne/ninjaLevelOne3/")
 	myTemplate = template.Must(template.ParseFiles(filePrefix + "/index.gohtml"))
 }
 
 func main () {
-	http.HandleFunc("/dog/", dog)
-	http.HandleFunc("/me/", me)
+	http.Handle("/dog/", http.HandlerFunc(dog))
+	http.Handle("/me/", http.HandlerFunc(me))
 	http.ListenAndServe(":8080", nil)
 }
